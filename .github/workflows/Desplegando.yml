@@ -1,0 +1,27 @@
+name: Desplegando en el entorno X
+
+on:
+  workflow_dispatch:
+    
+    inputs:
+
+      entorno:
+        description: "Selecciona el entorno de destino"
+        required: true
+        default: "dev"
+        type: choice
+        options:
+        - dev
+        - test
+        - pre
+        - pro
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mostrar entorno seleccionado
+        run: echo "Desplegando en el entorno ${{github.event.inputs.entorno}}"
+
