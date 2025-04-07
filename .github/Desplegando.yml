@@ -1,0 +1,27 @@
+name: Desplegando en el entorno X
+
+on:
+		workflow_dispatch:
+			inputs:
+				nombre:
+					description: "Nombre del entorno"
+					required: true
+					type: choice
+					default: "dev"
+					options:
+						- "dev"
+						- "test"
+						- "pre"
+						- "pro"
+
+job:
+	
+	desplegar:
+
+		runs-on: ubuntu-latest
+
+			steps:
+			- name: Desplegando en el entorno seleccionado
+			- run: |
+							echo "Desplegando en el entorno ${{ github.event.inputs.nombre}}"
+
