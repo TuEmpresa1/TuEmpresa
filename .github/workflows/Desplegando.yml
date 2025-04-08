@@ -2,7 +2,7 @@ name: Desplegando en el entorno X
 
 on:
   workflow_dispatch:
-    
+
     inputs:
 
       entorno:
@@ -20,6 +20,8 @@ jobs:
   deploy:
 
     runs-on: ubuntu-latest
+
+    environment: ${{github.event.inputs.entorno}}
 
     steps:
       - name: Mostrar entorno seleccionado
